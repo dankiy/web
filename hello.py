@@ -5,6 +5,6 @@ def app(environ, start_response):
     ]
     body = ''
     start_response(status, headers)
-    body += line + '\n'
+    body = body + line + '\n'
     start_response(status, headers)
     return [bytes(body, encoding = 'utf8')]
