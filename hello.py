@@ -1,3 +1,4 @@
+'''
 def wsgi_application(environ, start_response):
 status = '200 OK'
 headers = [ 
@@ -8,3 +9,11 @@ for line in environ["QUERY_STRING"].split("&"):
   body = body + line + "\n"
 start_response(status, headers)
 return [ body ]
+'''
+
+def app(environ, start_response):
+    data = ''
+    for line in environ["QUERY_STRING"].split("&"):
+        data = data+line+"\n"
+    start_response('200 OK', [('Content-Type', 'text/plain')])
+    return [data]
