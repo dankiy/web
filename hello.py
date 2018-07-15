@@ -5,6 +5,7 @@ def app(environ, start_response):
     ]
     body = ''
     start_response(status, headers)
-    body = body + line + '\n'
+    for line in environ["QUERY_STRING"].split("&"):
+        body += line + '\n'
     start_response(status, headers)
     return [bytes(body, encoding = 'utf8')]
